@@ -1,0 +1,60 @@
+{
+  "Globals": {
+    "Default": [0.25, 0.25, 0.25, 1.0],
+    "MainColor": [0.0, 0.9, 1.0, 1.0]
+  },
+
+  "Bordered Box": {
+    "Inner Color": "$Default",
+    "Outline Color": [1.0, 1.0, 1.0, 1.0],
+    "Inset": 1.0,
+    "Radius": [15, 15, 15, 15]
+  },
+  "Button": {
+    "Default Color": [0.3, 0.3, 0.3, 1.0],
+    "Hover Color": "$MainColor",
+    "Click Color": [0.0, 0.7, 0.8, 1.0],
+    "Radius": [10, 10, 10, 10]
+  },
+  "Checkbox": {
+    "Check Color": [0, 0, 0, 1],
+    "Hover Color": [0.2, 0.2, 0.2, 0.4],
+    "Background Color": [0.8, 0.8, 0.8, 1.0],
+    "Radius": [15, 15, 15, 15]
+  },
+  "GraphView": {
+    "Node Color": "$MainColor",
+    "Background Color": [0.4, 0.4, 0.4, 1],
+    "Inner Color": "$Default",
+    "Radius": [5, 5, 5, 5]
+  },
+  "InputBox": {
+    "Cursor Color": "$MainColor",
+    "Background Color": "$Default"
+  },
+  "Combobox": {
+    "Main Color": [0.4, 0.4, 0.4, 1],
+    "Sub Color": [0.5, 0.5, 0.5, 1],
+    "Radius": [0, 0, 0, 0]
+  },
+  "ProgressBar": {
+    "Color": "$MainColor",
+    "Border Color": [0.1, 0.1, 0.1, 1.0],
+    "Inset": 1.0
+  },
+  "Slider": {
+    "Color": "$Default"
+  },
+  "Text": {
+    "Color": [1.0, 1.0, 1.0]
+  },
+  "TextArea": {
+    "Text Color": "$MainColor"
+  },
+  "Toggle Slider": {
+    "Slider Color": [0.4, 0.4, 0.4, 1.0],
+    "Background Color": "$Default",
+    "Hover Color": [0.7, 0.7, 0.7, 1.0],
+    "Radius": [25, 25, 25, 25]
+  }
+}

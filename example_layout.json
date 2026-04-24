@@ -1,0 +1,171 @@
+{
+  "Background": {
+    "Id": "Background",
+    "Type": "HorizontalBox",
+    "Size": [1920, 1080],
+    "Children": [
+      {
+        "Id": "Bord",
+        "Type": "BorderedBox",
+        "Pos": [0, 0],
+        "Size": [675, 1080],
+        "Inset": 2
+      },
+      {
+        "Id": "Bord2",
+        "Type": "BorderedBox",
+        "Pos": [0, 0],
+        "Size": [675, 1080],
+        "Radius": [0, 0, 0, 0],
+        "Inset": 2,
+        "Flex": 1
+      }
+    ]
+  },
+  "LayoutVert": {
+    "Id": "LayoutVert",
+    "Type": "VerticalBox",
+    "Pos": [0, 0],
+    "Size": [675, 1080],
+    "Spacing": 5,
+    "Children": [
+      {
+        "Id": "spacer",
+        "Type": "Canvas",
+        "Size": [1920, 5]
+      },
+      {
+        "Id": "LayoutHori",
+        "Type": "HorizontalBox",
+        "Pos": [10, 0],
+        "Size": [1900, 50],
+        "Spacing": 5,
+        "Children": [
+          {
+            "Id": "But",
+            "Type": "Button",
+            "Size": [160, 50],
+            "Radius": [15, 15, 15, 15],
+            "Children": [
+              {
+                "Id": "Tex",
+                "Type": "Text",
+                "Pos": [0, 0],
+                "Text": "File",
+                "VAlign": "Center",
+                "HAlign": "Center"
+              }
+            ]
+          },
+          {
+            "Id": "But1",
+            "Type": "Button",
+            "Size": [160, 50],
+            "Radius": [15, 15, 15, 15],
+            "Flex": 0,
+            "Children": [
+              {
+                "Id": "Tex",
+                "Type": "Text",
+                "Pos": [0, 0],
+                "Text": "View",
+                "VAlign": "Center",
+                "HAlign": "Center"
+              }
+            ]
+          },
+          {
+            "Id": "But2",
+            "Type": "Button",
+            "Size": [160, 50],
+            "Radius": [15, 15, 15, 15],
+            "Flex": 0,
+            "Children": [
+              {
+                "Id": "Tex",
+                "Type": "Text",
+                "Pos": [0, 0],
+                "Text": "Options",
+                "VAlign": "Center",
+                "HAlign": "Center"
+              }
+            ]
+          },
+          {
+            "Id": "But4",
+            "Type": "Button",
+            "Size": [160, 50],
+            "Radius": [15, 15, 15, 15],
+            "Children": [
+              {
+                "Id": "Tex",
+                "Type": "Text",
+                "Pos": [0, 0],
+                "Text": "Temp",
+                "VAlign": "Center",
+                "HAlign": "Center"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "Picker_Canvas",
+        "Type": "Canvas",
+        "Size": [640, 540],
+        "Children": [
+          {
+            "Id": "Picker",
+            "Type": "ColorPicker",
+            "Pos": [80, 20],
+            "Size": [500, 500],
+            "Selector Inner Diameter": 36,
+            "Selector Outer Diameter": 40
+          }
+        ]
+      },
+      {
+        "Id": "Slide",
+        "Type": "Slider",
+        "Pos": [80, 0],
+        "Size": [500, 50],
+        "Radius": [10, 10, 10, 10],
+        "Color": [0.2, 0.2, 0.2, 1.0]
+      },
+      {
+        "Id": "TSlide",
+        "Type": "ToggleSlider",
+        "Pos": [80, 0],
+        "Size": [250, 50],
+        "Radius": [10, 10, 10, 10],
+        "Slider Color": [0.5, 0.5, 0.5, 1],
+        "Background Color": [0.2, 0.2, 0.2, 1.0]
+      },
+      {
+        "Id": "PB",
+        "Type": "ProgressBar",
+        "Pos": [80, 0],
+        "Size": [500, 50],
+        "Radius": [10, 10, 10, 10],
+        "Percent": 0.5,
+        "Max": 100
+      },
+      {
+        "Id": "Combo",
+        "Type": "Combobox",
+        "Pos": [20, 0],
+        "Size": [640, 50],
+        "Options": ["Test", "Cool", "Damn", "Shit", "What"]
+      },
+      {
+        "Id": "View",
+        "Type": "GraphView",
+        "Pos": [20, 0],
+        "Size": [640, 200],
+        "Scope Size": 50,
+        "Interval": 0.05,
+        "Max": 100
+      }
+    ]
+  }
+}
