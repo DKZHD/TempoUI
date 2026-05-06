@@ -286,7 +286,7 @@ static LayoutRegistry::AutoRegister dummy("Text", [](const JSON_OBJECT& json_obj
     }
     if (auto it = json_object.find("Color"); it != json_object.end())
     {
-        config.color(it->second.as_vec4());
+        config.color(it->second.as_vec3());
     }
     if (auto it = json_object.find("VAlign"); it != json_object.end())
     {

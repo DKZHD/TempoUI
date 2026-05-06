@@ -48,6 +48,9 @@ public:
     InputBox(const std::string& id, glm::vec2 pos, glm::vec2 size);
     ~InputBox() override;
 
+    std::string get_text();
+    void on_enter(std::function<void(std::string)> func);
+
     // Template only accepts chars, any other type will cause a compiler error!
     template <typename... Args>
         requires(std::same_as<Args, char> && ...)
@@ -75,6 +78,7 @@ private:
     std::bitset<256> chars_;
 
     Text* text_ = nullptr;
+    std::unique_ptr<std::function<void(std::string)>> callback_;
 
     glm::vec4 background_color_ = glm::vec4(0.4f, 0.4f, 0.4f, 1.0f);
     glm::vec4 cursor_color_ = glm::vec4(0.7f, 0.7f, 0.7f, 1.f);

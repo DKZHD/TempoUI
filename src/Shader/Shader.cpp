@@ -91,6 +91,10 @@ void Shader::use() const
     glUseProgram(ID);
 }
 
+void Shader::set_int(const std::string& name, int i)
+{
+    glUniform1i(static_cast<GLint>(get_uniform_location(name)), i);
+}
 void Shader::set_float(const std::string& name, float f)
 {
     glUniform1f(static_cast<GLint>(get_uniform_location(name)), f);

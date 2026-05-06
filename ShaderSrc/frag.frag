@@ -4,11 +4,11 @@ in vec2 vSize;
 in vec2 vTexCoords;
 in vec4 vColor;
 in vec4 vRadius;
-in vec4 vClipping;
 flat in float vTextureID;
 
 out vec4 fragColor;
 
+uniform int DefaultFontID;
 uniform sampler2D uTextures[32];
 
 sampler2D get_sample(int id){
@@ -59,12 +59,6 @@ float roundedRectSDF(vec2 point, vec2 bounds, vec4 radius) {
 }
 
 void main(){
-
-    if (vPosition.x < vClipping.x || vPosition.x > vClipping.z ||
-            vPosition.y < vClipping.y || vPosition.y > vClipping.w) {
-            discard;
-            }
-
     vec2 center = vSize * 0.5;
     vec2 p = (vTexCoords*vSize)-center;
 
@@ -72,8 +66,8 @@ void main(){
     float alpha = 1.0 - smoothstep(-1.0,1.0,dist);
     if(alpha<= 0.0) discard;
 
-    int id = int(vTextureID + 0.5);
-    if(id == 1)
+    int id = int(vTextureID+0.5);
+    if(id == DefaultFontID)
     {
         fragColor = vec4(vColor.rgb, vColor.a * texture(get_sample(id),vTexCoords).r);
     }

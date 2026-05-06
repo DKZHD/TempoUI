@@ -42,6 +42,7 @@ namespace DefaultShaders
         
         out vec4 fragColor;
         
+        uniform int DefaultFontID;
         uniform sampler2D uTextures[32];
         
         sampler2D get_sample(int id){
@@ -100,15 +101,9 @@ namespace DefaultShaders
             if(alpha<= 0.0) discard;
         
             int id = int(vTextureID+0.5);
-            if(id == 1)
+            if(id == DefaultFontID)
             {
                 fragColor = vec4(vColor.rgb, vColor.a * texture(get_sample(id),vTexCoords).r);
-            }
-            else if(id == -1)
-            {
-                vec4 top_color = mix(vec4(0.0, 1.0, 0.0, 1.0), vec4(1.0, 1.0, 1.0, 1.0), vTexCoords.x);
-                vec4 bot_color = mix(vec4(0.0, 0.0, 1.0, 1.0), vec4(1.0, 0.0, 0.0, 1.0), vTexCoords.x);
-                fragColor = mix(top_color, bot_color, vTexCoords.y);
             }
             else
             {

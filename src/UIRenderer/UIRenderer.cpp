@@ -246,6 +246,7 @@ void UIRenderer::add_font_from_memory(const std::string& name, unsigned char* da
     shader->add_texture(name, atlas);
 }
 
+#ifdef LAYOUT_LOADER
 void UIRenderer::bind_layout_callback(std::function<void()> func)
 {
     layout_callback_ = std::make_unique<std::function<void()>>(std::move(func));
@@ -259,6 +260,7 @@ void UIRenderer::load_layout(const std::string& layout_name)
         (*layout_callback_)();
     }
 }
+#endif
 
 void UIRenderer::remove_element_from_canvas(const std::string& id)
 {

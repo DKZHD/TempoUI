@@ -1,4 +1,5 @@
 #include "OpenGLRenderer.h"
+#include "TextHandler/TextHandler.h"
 #include "UIMesh/UIMesh.h"
 #include "Shader/Shader.h"
 
@@ -58,6 +59,8 @@ void OpenGLRenderer::begin_frame()
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glBindVertexArray(vao_);
+    uint32_t font_id = TextHandler::get().get_font("default_font");
+    shader_.set_int("DefaultFontID", (int)font_id - 1);
 }
 
 void OpenGLRenderer::end_frame()

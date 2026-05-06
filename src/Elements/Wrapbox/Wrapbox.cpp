@@ -51,7 +51,7 @@ void Wrapbox::update_buffers()
     }
 }
 
-static LayoutRegistry::AutoRegister dummy("WrapBox", [](const JSON_OBJECT& json_object, const BaseProperties& props) // NOLINT
+static LayoutRegistry::AutoRegister dummy("Wrapbox", [](const JSON_OBJECT& json_object, const BaseProperties& props) // NOLINT
 {
     WrapboxConfig config;
     config.id(props.Id.value());

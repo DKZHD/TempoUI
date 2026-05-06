@@ -37,8 +37,10 @@ public:
     template <typename T>
     T* get_element(const std::string& id);
 
+#ifdef LAYOUT_LOADER
     void bind_layout_callback(std::function<void()> func);
     void load_layout(const std::string& layout_name);
+#endif
 
     void remove_element_from_canvas(const std::string& id);
 

@@ -94,6 +94,16 @@ InputBox::~InputBox()
 {
 }
 
+std::string InputBox::get_text()
+{
+    return text_ != nullptr ? text_->get_text() : "";
+}
+
+void InputBox::on_enter(std::function<void(std::string)> func)
+{
+    callback_ = std::make_unique<std::function<void(std::string)>>(std::move(func));
+}
+
 void InputBox::self_on_mouse_button(UI::MouseButton button, UI::Action action)
 {
     if (action == UI::Action::Press)
@@ -171,6 +181,12 @@ void InputBox::self_on_key(UI::Key key, UI::Action action)
                 cursor_index_++;
                 reset_cursor();
                 mark_dirty();
+            }
+            break;
+        case UI::Key::Enter:
+            if (callback_)
+            {
+                (*callback_)(get_text());
             }
             break;
         default:

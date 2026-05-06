@@ -126,7 +126,7 @@ BorderedBoxConfig::BorderedBoxConfig()
         const std::map<std::string, JSONToken>& mapped_values = bordered_box->as_object();
         for (const auto& [name, value] : mapped_values)
         {
-            if (name == "Outline Color")
+            if (name == "Outer Color")
             {
                 outer_color_ = (value.as_vec4());
             }

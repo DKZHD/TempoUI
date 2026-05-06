@@ -5,36 +5,19 @@ TempoUI was created as a middle ground between the user interface giants Qt and 
 ### *Important Notes*
 To get started using this library there are some smaller features that have to be explained. Some features are disabled by default.
 
-```cpp
-#define GLFW_UI
-```
-This enables glfw for the inputs of the UI. 
-
----
-```cpp
-#define OPENGL
-```
-This enables OpenGL to be used as the backend. This will also implement the Image- and TextHandler and shader utilizing GLAD.
-
----
-``` cpp
-#define NETWORK 
-```
-This enables socket support using TCP protocols. Features for **server** and **client** are supported.
-
----
-``` cpp
-#define LAYOUT_LOADER 
-```
-This enables layout loading through JSON files.
-
----
+>[!TIP]
+>To enable optional features, add the relevant Preprocessor Definitions to your project
+>
+>* `GLFW_UI`:  Enables glfw for the inputs of the UI. 
+>* `OPENGL`: Enables OpenGL as rendering backend.
+>* `LAYOUT_LOADER`: Enables JSON layout loading.
+>* `NETWORK`: Enables TCP networking features. [Networking Documentation](docs/Network.md)
+>
+>This can also be achieved by defining a macro with the same names before the inclusion of "TempoUI.h". It is still recommended to use preprocessor definitions for consistency. 
 ###### *Planned:*
 - [ ] Improving Drag and Drop
 - [ ] Adding support for **Vulkan** backend
 - [ ] Adding support for **SDL2**
-
-All of these have to be defined before the inclusion of the *TempoUI.h* file or when compiling as a static library. 
 
 ### *Getting Started*
 
@@ -100,16 +83,15 @@ element_ptr->get_element<Type>(identifier); // Gets a pointer to the element
 
 ---
 ##### **Element Types**
-- **Containers:** [Canvas](docs/Canvas), [Bordered Box](docs/BorderedBox), [Horizontal Box](docs/HorizontalBox), [Vertical Box](docs/VerticalBox), [Scroll Box](docs/ScrollBox), [Wrap box](docs/Wrapbox), 
-[Combo box](docs/Combobox).
-- **Interactive:** [Button](docs/Button), [Checkbox](docs/Checkbox), [Slider](docs/Slider), [Toggle Slider](docs/ToggleSlider), [Text Area](docs/TextArea), [Input Box](docs/InputBox), [Color Picker](docs/ColorPicker). 
-- **Monitoring:** [Progress Bar](docs/ProgressBar), [Graph View](docs/GraphView).
-- **Other:** [Image](docs/Image), [Text](docs/Text).
+- **Containers:** [Canvas](docs/Canvas.md), [Bordered Box](docs/BorderedBox.md), [Horizontal Box](docs/HorizontalBox.md), [Vertical Box](docs/VerticalBox.md), [Scroll Box](docs/ScrollBox.md), [Wrap box](docs/Wrapbox.md), 
+[Combo box](docs/Combobox.md).
+- **Interactive:** [Button](docs/Button.md), [Checkbox](docs/Checkbox.md), [Slider](docs/Slider.md), [Toggle Slider](docs/ToggleSlider.md), [Text Area](docs/TextArea.md), [Input Box](docs/InputBox.md), [Color Picker](docs/ColorPicker.md). 
+- **Monitoring:** [Progress Bar](docs/ProgressBar.md), [Graph View](docs/GraphView.md).
+- **Other:** [Image](docs/Image.md), [Text](docs/Text.md).
 
 ---
 #### **JSON**
 ##### *Layout*
-[Documentation](docs/Layout.md)
 The main way of handling UI within TempoUI is by utilizing its JSON layout functionality.
 
 ``` cpp
@@ -123,7 +105,10 @@ If you want to hot-reload the layout of your UI, this is the way that it is inte
 ``` cpp
 // Bind a callback to layout change
 ui_renderer.bind_layout_callback([](){
-	// Elements with special properties
+	/* 
+		Elements with special properties
+		Always use this for getting and binding properties if hot-reloading!
+	*/
 });
 ```
 
@@ -132,8 +117,9 @@ ui_renderer.bind_layout_callback([](){
 ui_renderer.remove_element_from_canvas<Canvas>("Layout_Canvas");
 ui_renderer.load_layout(/*json file name*/);
 ```
+[Layout Documentation](docs/Layout.md)
 ##### *Theme*
-[Documentation](docs/Theme)
+
 It is highly recommended to utilize a theme for your UI. Without a theme, every color needs to be coded in manually which is a hassle.
 
 *Loading theme initially*
@@ -148,3 +134,4 @@ UIRenderer ui_renderer(/*JSON theme data, if wanted (raw data)*/);
 ThemeManager::get().load_theme(/*JSON theme data*/);
 ui_renderer.get_element<Canvas>("Screen")->theme_updated();
 ```
+[Theme Documentation](docs/Theme.md)

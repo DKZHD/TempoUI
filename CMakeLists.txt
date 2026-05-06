@@ -48,7 +48,7 @@ if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE ws2_32)
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE GLFW_UI OPENGL)
+target_compile_definitions(${PROJECT_NAME} PRIVATE GLFW_UI OPENGL LAYOUT_LOADER)
 
 target_include_directories(${PROJECT_NAME} PRIVATE
         ${CMAKE_SOURCE_DIR}/vendor

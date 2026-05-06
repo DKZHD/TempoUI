@@ -26,10 +26,10 @@ public:
 
     // Client-Side
     void connect_to_server(const std::string& ip, const std::string& port);
-    void send_message(const std::string& message);
     void disconnect_from_server();
 
     void process_messages(const std::function<void(const std::string&)>& message_recieved_func);
+    void send_message(const std::string& message);
 
 private:
     std::atomic<bool> is_active = false;

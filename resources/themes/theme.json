@@ -6,7 +6,7 @@
 
   "Bordered Box": {
     "Inner Color": "$Default",
-    "Outline Color": [1.0, 1.0, 1.0, 1.0],
+    "Outer Color": [1.0, 1.0, 1.0, 1.0],
     "Inset": 1.0,
     "Radius": [15, 15, 15, 15]
   },
