@@ -14,18 +14,17 @@ VerticalBox(const std::string& id, glm::vec2 pos, glm::vec2 size, float spacing)
 
 Can be constructed before then utilized inside the constructor of the vertical box:
 ``` cpp
-
-VerticalBoxConfig vertical_box_config;
+TempoUI::VerticalBoxConfig vertical_box_config;
 vertical_box_config.spacing(/*float*/);
 
-VerticalBox vertical_box1(vertical_box_config);
-VerticalBox vertical_box2(vertical_box_config);
+TempoUI::VerticalBox vertical_box1(vertical_box_config);
+TempoUI::VerticalBox vertical_box2(vertical_box_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the vertical box constructor:
 ``` cpp
-VerticalBox vertical_box1(VerticalBoxConfig()
+TempoUI::VerticalBox vertical_box1(TempoUI::VerticalBoxConfig()
 .id(/*identifier*/)
 .spacing(/*float*/));
 ```

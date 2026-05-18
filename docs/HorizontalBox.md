@@ -14,18 +14,17 @@ HorizontalBox(const std::string& id, glm::vec2 pos, glm::vec2 size, float spacin
 
 Can be constructed before then utilized inside the constructor of the horizontal box:
 ``` cpp
-
-HorizontalBoxConfig horizontal_box_config;
+TempoUI::HorizontalBoxConfig horizontal_box_config;
 horizontal_box_config.spacing(/*float*/);
 
-HorizontalBox horizontal_box1(horizontal_box_config);
-HorizontalBox horizontal_box2(horizontal_box_config);
+TempoUI::HorizontalBox horizontal_box1(horizontal_box_config);
+TempoUI::HorizontalBox horizontal_box2(horizontal_box_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the horizontal box constructor:
 ``` cpp
-HorizontalBox horizontal_box1(HorizontalBoxConfig()
+TempoUI::HorizontalBox horizontal_box1(TempoUI::HorizontalBoxConfig()
 .id(/*identifier*/)
 .spacing(/*float*/));
 ```

@@ -64,7 +64,7 @@ ui_renderer.bind_layout_callback([](){
 
 ``` cpp
 // Bind a key press to a function
-ui_renderer.remove_element_from_canvas<Canvas>("Layout_Canvas");
+ui_renderer.remove_element_from_canvas("Layout_Canvas");
 ui_renderer.load_layout(/*json file name*/);
 ```
 Here we first delete the previous layout (stored as `Layout_Canvas` as explained earlier), then we simply load it again. This will also cause the callback set with the `bind_layout_callback` function to trigger as well.

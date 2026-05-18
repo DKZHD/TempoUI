@@ -16,20 +16,20 @@ Checkbox(const std::string& id, glm::vec2 pos, glm::vec2 size, glm::vec4 radius 
 
 Can be constructed before then utilized inside the constructor of the checkbox:
 ``` cpp
-CheckboxConfig checkbox_config;
+TempoUI::CheckboxConfig checkbox_config;
 checkbox_config.id(/*identifier*/)
 .check_color(/*vec4*/)
 .background_color(/*vec4*/)
 .hover_color(/*vec4*/);
 
-Checkbox checkbox1(checkbox_config);
-Checkbox checkbox2(checkbox_config);
+TempoUI::Checkbox checkbox1(checkbox_config);
+TempoUI::Checkbox checkbox2(checkbox_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the checkbox constructor:
 ``` cpp
-Checkbox checkbox(CheckboxConfig()
+TempoUI::Checkbox checkbox(TempoUI::CheckboxConfig()
 .id(/*identifier*/)
 .check_color(/*vec4*/)
 .background_color(/*vec4*/)

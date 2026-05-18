@@ -16,21 +16,21 @@ Combobox(const std::string& id, glm::vec2 pos, glm::vec2 size, float spacing = 0
 
 Can be constructed before then utilized inside the constructor of the combo box:
 ``` cpp
-ComboboxConfig combobox_config;
+TempoUI::ComboboxConfig combobox_config;
 combobox_config
 .id(/*identifier*/)
 .spacing(/*float*/)
 .main_color(/*vec4*/)
 .sub_color(/*vec4*/);
 
-Combobox combobox1(combobox_config);
-Combobox combobox2(combobox_config);
+TempoUI::Combobox combobox1(combobox_config);
+TempoUI::Combobox combobox2(combobox_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the combo box constructor:
 ``` cpp
-Combobox combobox1(ComboboxConfig()
+TempoUI::Combobox combobox1(TempoUI::ComboboxConfig()
 .id(/*identifier*/)
 .spacing(/*float*/)
 .main_color(/*vec4*/)

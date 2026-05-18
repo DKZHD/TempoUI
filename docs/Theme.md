@@ -9,7 +9,7 @@ When this is done the theme will be loaded to the ThemeManager automatically.
 
 If you still want to load the theme manually, for instance if hot-reloading, this can be achieved like this.
 ``` cpp
-ThemeManager::get().load_theme(/*JSON data (best read from a file)*/);
+TempoUI::ThemeManager::get().load_theme(/*JSON data (best read from a file)*/);
 ```
 ### Format
 #### Getting Started with JSON
@@ -60,7 +60,7 @@ To use the global variables at a later stage simply input the key name as well a
 Hot-reloading the theme is very simple.
 ``` cpp
 // Simply load the theme again
-ThemeManager::get().load_theme(/*JSON data (best read from a file)*/);
+TempoUI::ThemeManager::get().load_theme(/*JSON data (best read from a file)*/);
 ui_renderer.get_element<Canvas>("Screen")->theme_updated();
 ```
 `theme_updated` will recursively ensure each element in the hierarchy gets updated. 

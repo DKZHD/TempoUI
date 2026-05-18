@@ -17,21 +17,21 @@ InputBox(const std::string& id, glm::vec2 pos, glm::vec2 size)
 
 Can be constructed before then utilized inside the constructor of the input box:
 ``` cpp
-InputBoxConfig input_box_config;
+TempoUI::InputBoxConfig input_box_config;
 input_box_config
 .id(/*identifier*/)
 .background_color(/*vec4*/)
 .cursor_color(/*vec4*/)
 .text_color(/*vec4*/);
 
-InputBox input_box1(input_box_config);
-InputBox input_box2(input_box_config);
+TempoUI::InputBox input_box1(input_box_config);
+TempoUI::InputBox input_box2(input_box_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the input box constructor:
 ``` cpp
-InputBox input_box1(InputBoxConfig()
+TempoUI::InputBox input_box1(TempoUI::InputBoxConfig()
 .id(/*identifier*/)
 .background_color(/*vec4*/)
 .cursor_color(/*vec4*/)

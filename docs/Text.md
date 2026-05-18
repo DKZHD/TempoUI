@@ -17,7 +17,7 @@ Text(const std::string& id, const std::string& text, glm::vec2 pos, glm::vec3 co
 
 Can be constructed before then utilized inside the constructor of the text:
 ``` cpp
-TextConfig text_config;
+TempoUI::TextConfig text_config;
 text_config
 .id(/*identifier*/)
 .text(/*text*/)
@@ -25,14 +25,14 @@ text_config
 .align_vert(/*Custom alignment enum (Top / Center / Bottom)*/)
 .align_hori(/*Custom alignment enum (Left / Center / Right)*/);
 
-Text text1(text_config);
-Text text2(text_config);
+TempoUI::Text text1(text_config);
+TempoUI::Text text2(text_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the text constructor:
 ``` cpp
-Text text1(TextConfig()
+TempoUI::Text text1(TempoUI::TextConfig()
 .id(/*identifier*/)
 .text(/*text*/)
 .color(/*vec3*/)

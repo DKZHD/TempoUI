@@ -6,7 +6,7 @@ Although limited, TempoUI supports basic networking through a TCP protocol.
 ### Server-Side
 To utilize the server side of the NetworkManager you do it like this:
 ``` cpp
-NetworkManager server;
+TempoUI::NetworkManager server;
 server.start_server(/*port as string*/);
 ```
 The server can at any top be stopped afterwards by using the `stop` function, which also will be called automatically if the NetworkManager get discarded.
@@ -22,7 +22,7 @@ While quite similar to the server-side, there is one difference. Connecting to t
 
 To connect to a server as a client use the `connect_to_server` function like this:
 ``` cpp
-NetworkManager client;
+TempoUI::NetworkManager client;
 client.connect_to_server(/*ip as string*/, /*port as string*/);
 ```
 To disconnect simply call `disconnect_from_server`

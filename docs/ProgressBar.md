@@ -14,7 +14,7 @@ ProgressBar(const std::string& id, glm::vec2 pos, glm::vec2 size, float max, flo
 
 Can be constructed before then utilized inside the constructor of the progress bar:
 ``` cpp
-ProgressBarConfig progress_bar_config;
+TempoUI::ProgressBarConfig progress_bar_config;
 progress_bar_config
 .id(/*identifier*/)
 .percent(/*float 0-1*/)
@@ -23,14 +23,14 @@ progress_bar_config
 .color(/*vec4*/)
 .border_color(/*vec4*/);
 
-ProgressBar progress_bar1(progress_bar_config);
-ProgressBar progress_bar2(progress_bar_config);
+TempoUI::ProgressBar progress_bar1(progress_bar_config);
+TempoUI::ProgressBar progress_bar2(progress_bar_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the progress bar constructor:
 ``` cpp
-ProgressBar progress_bar1(ProgressBarConfig()
+TempoUI::ProgressBar progress_bar1(TempoUI::ProgressBarConfig()
 .id(/*identifier*/)
 .percent(/*float 0-1*/)
 .max(/*float*/)

@@ -16,21 +16,21 @@ ToggleSlider(const std::string& id, glm::vec2 pos, glm::vec2 size, glm::vec4 col
 
 Can be constructed before then utilized inside the constructor of the toggle slider:
 ``` cpp
-ToggleSliderConfig toggle_slider_config;
+TempoUI::ToggleSliderConfig toggle_slider_config;
 toggle_slider_config
 .id(/*identifier*/)
 .slider_color(/*vec4*/)
 .background_color(/*vec4*/)
 .hover_color(/*vec4*/);
 
-ToggleSlider toggle_slider1(toggle_slider_config);
-ToggleSlider toggle_slider2(toggle_slider_config);
+TempoUI::ToggleSlider toggle_slider1(toggle_slider_config);
+TempoUI::ToggleSlider toggle_slider2(toggle_slider_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the toggle slider constructor:
 ``` cpp
-ToggleSlider toggle_slider1(ToggleSliderConfig()
+TempoUI::ToggleSlider toggle_slider1(TempoUI::ToggleSliderConfig()
 .id(/*identifier*/)
 .slider_color(/*vec4*/)
 .background_color(/*vec4*/)

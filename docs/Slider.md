@@ -14,7 +14,7 @@ Slider(const std::string& id, glm::vec2 pos, glm::vec2 size, glm::vec4 color = g
 
 Can be constructed before then utilized inside the constructor of the slider:
 ``` cpp
-SliderConfig slider_config;
+TempoUI::SliderConfig slider_config;
 slider_config
 .id(/*identifier*/)
 .min(/*float*/)
@@ -22,14 +22,14 @@ slider_config
 .slider_size(/*float*/)
 .color(/*vec4*/);
 
-Slider slider1(slider_config);
-Slider slider2(slider_config);
+TempoUI::Slider slider1(slider_config);
+TempoUI::Slider slider2(slider_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the slider constructor:
 ``` cpp
-Slider slider1(SliderConfig()
+TempoUI::Slider slider1(TempoUI::SliderConfig()
 .id(/*identifier*/)
 .min(/*float*/)
 .max(/*float*/)

@@ -14,19 +14,19 @@ Image(const std::string& id, std::string tex_name, glm::vec2 pos, glm::vec2 size
 
 Can be constructed before then utilized inside the constructor of the image:
 ``` cpp
-ImageConfig image_config;
+TempoUI::ImageConfig image_config;
 image_config
 .id(/*identifier*/)
 .texture_name(/*Texture Name*/)
 
-Image image1(image_config);
-Image image2(image_config);
+TempoUI::Image image1(image_config);
+TempoUI::Image image2(image_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the image constructor:
 ``` cpp
-Image image1(ImageConfig()
+TempoUI::Image image1(TempoUI::ImageConfig()
 .id(/*identifier*/)
 .texture_name(/*Texture Name*/));
 ```
@@ -44,10 +44,10 @@ Generally recommended for creating unique elements.
 There are two ways of adding images to the image handler.
 ``` cpp
 // 1. add_texture
-ImageHandler::get().add_texture(/*texture name*/, /*path of image*/);
+TempoUI::ImageHandler::get().add_texture(/*texture name*/, /*path of image*/);
 
 // 2. add_texture_from_data
-ImageHandler::get().add_texture_from_data(/*texture name*/, /* char* data */, /* Data Length */);
+TempoUI::ImageHandler::get().add_texture_from_data(/*texture name*/, /* char* data */, /* Data Length */);
 ```
 >[!Tip]
 >To load image from data, stb_image is highly recommended!

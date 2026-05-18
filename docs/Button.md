@@ -16,21 +16,21 @@ Button(const std::string& id, glm::vec2 pos, glm::vec2 size, glm::vec4 color = g
 
 Can be constructed before then utilized inside the constructor of the button:
 ``` cpp
-ButtonConfig button_config;
+TempoUI::ButtonConfig button_config;
 button_config
 .id(/*identifier*/)
 .color(/*vec4 main color*/)
 .hover_color(/*vec4 hover color*/)
 .clicked_color(/*vec4 clicked color*/);
 
-Button button1(button_config);
-Button button2(button_config);
+TempoUI::Button button1(button_config);
+TempoUI::Button button2(button_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the button constructor:
 ``` cpp
-Button button1(ButtonConfig()
+TempoUI::Button button1(TempoUI::ButtonConfig()
 .id(/*identifier*/)
 .color(/*vec4 main color*/)
 .hover_color(/*vec4 hover color*/)

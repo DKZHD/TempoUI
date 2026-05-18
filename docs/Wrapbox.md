@@ -14,16 +14,16 @@ Wrapbox(const std::string& id, glm::vec2 pos, glm::vec2 size)
 
 Can be constructed before then utilized inside the constructor of the wrap box:
 ``` cpp
-WrapboxConfig wrapbox_config;
+TempoUI::WrapboxConfig wrapbox_config;
 
-Wrapbox wrapbox1(wrapbox_config);
-Wrapbox wrapbox2(wrapbox_config);
+TempoUI::Wrapbox wrapbox1(wrapbox_config);
+TempoUI::Wrapbox wrapbox2(wrapbox_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the wrap box constructor:
 ``` cpp
-Wrapbox wrapbox1(WrapboxConfig()
+TempoUI::Wrapbox wrapbox1(TempoUI::WrapboxConfig()
 .id(/*identifier*/));
 ```
 Generally recommended for creating unique elements.

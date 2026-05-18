@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 3.20)
 project(TempoUI)
 
 include(FetchContent)
@@ -14,6 +14,11 @@ list(APPEND PROJECT_SOURCES "vendor/glad.c")
 
 set_source_files_properties("vendor/glad.c" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
 
+option(TEMPO_USE_GLFW "Use GLFW for inputs" ON)
+option(TEMPO_USE_OPENGL "Use OpenGL as rendering backend" ON)
+option(TEMPO_USE_LAYOUTS "Enable JSON layout loading" ON)
+
+if(TEMPO_USE_GLFW)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
@@ -23,6 +28,9 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/glfw/glfw.git
         GIT_TAG 3.4
 )
+
+FetchContent_MakeAvailable(glfw)
+endif()
 
 set(FT_DISABLE_ZLIB ON CACHE BOOL "" FORCE)
 set(FT_DISABLE_BZIP2 ON CACHE BOOL "" FORCE)
@@ -36,37 +44,53 @@ FetchContent_Declare(
         GIT_TAG VER-2-14-1
 )
 
-FetchContent_MakeAvailable(glfw freetype)
+FetchContent_MakeAvailable(freetype)
 
 if(CMAKE_BUILD_TYPE)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
 endif()
 
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+add_library(${PROJECT_NAME} OBJECT ${PROJECT_SOURCES})
 
 if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE ws2_32)
 endif()
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE GLFW_UI OPENGL LAYOUT_LOADER)
-
-target_include_directories(${PROJECT_NAME} PRIVATE
-        ${CMAKE_SOURCE_DIR}/vendor
-        ${CMAKE_SOURCE_DIR}/src/PCH
-        ${CMAKE_SOURCE_DIR}/src
+target_include_directories(${PROJECT_NAME} 
+        PUBLIC
+                ${PROJECT_SOURCE_DIR}/vendor
+                ${PROJECT_SOURCE_DIR}/src
+                ${PROJECT_SOURCE_DIR}/src/TempoUI
+        PRIVATE
+                ${PROJECT_SOURCE_DIR}/src/TempoUI/PCH
 )
 
-if(EXISTS "${CMAKE_SOURCE_DIR}/src/PCH/PCH.h")
-    target_precompile_headers(${PROJECT_NAME} PRIVATE src/PCH/PCH.h)
+if(EXISTS "${PROJECT_SOURCE_DIR}/src/TempoUI/PCH/PCH.h")
+    target_precompile_headers(${PROJECT_NAME} PRIVATE src/TempoUI/PCH/PCH.h)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-        glfw
         freetype
 )
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    "${CMAKE_SOURCE_DIR}/resources"
-    "$<TARGET_FILE_DIR:${PROJECT_NAME}>/resources"
+if(TEMPO_USE_GLFW)
+target_compile_definitions(${PROJECT_NAME} PUBLIC GLFW_UI)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+        glfw
 )
+endif()
+if(TEMPO_USE_OPENGL)
+target_compile_definitions(${PROJECT_NAME} PUBLIC OPENGL)
+endif()
+if(TEMPO_USE_LAYOUTS)
+target_compile_definitions(${PROJECT_NAME} PUBLIC LAYOUT_LOADER)
+endif()
+
+
+function(TempoUI_Resources TARGET_NAME)
+        add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${TempoUI_SOURCE_DIR}/resources"
+            "$<TARGET_FILE_DIR:${TARGET_NAME}>/resources"
+        )
+endfunction()

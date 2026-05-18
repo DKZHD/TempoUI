@@ -27,14 +27,14 @@ TempoUI itself doesn't include the capabilities of window management, therefore 
 **Minimal Working Example**:
 
 ``` cpp
-#include "TempoUI.h"
+#include <TempoUI/TempoUI.h>
 
 // Window context already created
 
-UIRenderer ui_renderer(/*JSON theme data, if wanted (raw data)*/);
+TempoUI::UIRenderer ui_renderer(/*JSON theme data, if wanted (raw data)*/);
 ui_renderer.init(window_width, window_height);
 // Multiple input bindings will be added later, change GLFW with wanted handler
-UI::GLFW::init_input(window_context);
+TempoUI::UI::GLFW::init_input(window_context);
 
 // In run loop
 if(ui_renderer.draw(delta_time))
@@ -43,15 +43,17 @@ if(ui_renderer.draw(delta_time))
 }
 ```
 
+For more details on hooking it up to your application, check out:
+[CMake Integration](docs/CMakeIntegration.md)
 ##### **General Element Management**
 
 *Element Creation:*
 ``` cpp
-ui_renderer.create_element<Type>(Arguments);
+ui_renderer.add_element<Type>(Arguments);
 ```
 Element Removal:
 ``` cpp
-ui_renderer.remove_element_from_canvas<Type>(identifier);
+ui_renderer.remove_element_from_canvas(identifier);
 ```
 Element Access:
 ``` cpp
@@ -114,7 +116,7 @@ ui_renderer.bind_layout_callback([](){
 
 ``` cpp
 // Bind a key press to a function
-ui_renderer.remove_element_from_canvas<Canvas>("Layout_Canvas");
+ui_renderer.remove_element_from_canvas("Layout_Canvas");
 ui_renderer.load_layout(/*json file name*/);
 ```
 [Layout Documentation](docs/Layout.md)
@@ -125,13 +127,13 @@ It is highly recommended to utilize a theme for your UI. Without a theme, every 
 *Loading theme initially*
 ``` cpp
 // During initialization
-UIRenderer ui_renderer(/*JSON theme data, if wanted (raw data)*/);
+TempoUI::UIRenderer ui_renderer(/*JSON theme data, if wanted (raw data)*/);
 ```
 
 *Hot-reloading theme*
 ``` cpp
 // Before element creation
-ThemeManager::get().load_theme(/*JSON theme data*/);
-ui_renderer.get_element<Canvas>("Screen")->theme_updated();
+TempoUI::ThemeManager::get().load_theme(/*JSON theme data*/);
+ui_renderer.get_element<TempoUI::Canvas>("Screen")->theme_updated();
 ```
 [Theme Documentation](docs/Theme.md)

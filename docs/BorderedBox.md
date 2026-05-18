@@ -17,21 +17,21 @@ BorderedBox(const std::string& id, glm::vec2 pos, glm::vec2 size, float inset = 
 
 Can be constructed before then utilized inside the constructor of the bordered box:
 ``` cpp
-BorderedBoxConfig bordered_box_config;
+TempoUI::BorderedBoxConfig bordered_box_config;
 bordered_box_config
 .id(/*identifier*/)
 .inset(/*inset*/)
 .inner_color(/*vec4 inner color*/)
 .outer_color(/*vec4 outer color*/);
 
-BorderedBox box1(bordered_box_config);
-BorderedBox box2(bordered_box_config);
+TempoUI::BorderedBox box1(bordered_box_config);
+TempoUI::BorderedBox box2(bordered_box_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the bordered box constructor:
 ``` cpp
-BorderedBox box1(BorderedBoxConfig()
+TempoUI::BorderedBox box1(TempoUI::BorderedBoxConfig()
 .id(/*identifier*/)
 .inset(/*inset*/)
 .inner_color(/*vec4 inner color*/)

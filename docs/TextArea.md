@@ -23,19 +23,19 @@ TextArea(const std::string& id, glm::vec2 pos, glm::vec2 size)
 
 Can be constructed before then utilized inside the constructor of the text area:
 ``` cpp
-TextAreaConfig text_area_config;
+TempoUI::TextAreaConfig text_area_config;
 text_area_config
 .id(/*identifier*/)
 .text_color(/*vec4*/);
 
-TextArea text_area1(text_area_config);
-TextArea text_area2(text_area_config);
+TempoUI::TextArea text_area1(text_area_config);
+TempoUI::TextArea text_area2(text_area_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the text area constructor:
 ``` cpp
-TextArea text_area1(TextAreaConfig()
+TempoUI::TextArea text_area1(TempoUI::TextAreaConfig()
 .id(/*identifier*/)
 .text_color(/*vec4*/));
 ```

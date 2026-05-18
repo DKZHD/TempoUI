@@ -15,19 +15,18 @@ ScrollBox(const std::string& id, glm::vec2 pos, glm::vec2 size, float spacing, D
 
 Can be constructed before then utilized inside the constructor of the scroll box:
 ``` cpp
-
-ScrollBoxConfig scroll_box_config;
+TempoUI::ScrollBoxConfig scroll_box_config;
 scroll_box_config.spacing(/*float*/)
 .direction(/*Direction::Vertical or Direction::Horizontal*/);
 
-ScrollBox scroll_box1(scroll_box_config);
-ScrollBox scroll_box2(scroll_box_config);
+TempoUI::ScrollBox scroll_box1(scroll_box_config);
+TempoUI::ScrollBox scroll_box2(scroll_box_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the scroll box constructor:
 ``` cpp
-ScrollBox scroll_box1(ScrollBoxConfig()
+TempoUI::ScrollBox scroll_box1(TempoUI::ScrollBoxConfig()
 .id(/*identifier*/)
 .spacing(/*float*/)
 .direction(/*Direction::Vertical or Direction::Horizontal*/));

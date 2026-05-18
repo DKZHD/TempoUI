@@ -16,7 +16,7 @@ GraphView(const std::string& id, glm::vec2 pos, glm::vec2 size, int scope_size, 
 
 Can be constructed before then utilized inside the constructor of the graph view:
 ``` cpp
-GraphViewConfig graph_view_config;
+TempoUI::GraphViewConfig graph_view_config;
 graph_view_config
 .id(/*identifier*/)
 .scope_size(/*int*/)
@@ -27,14 +27,14 @@ graph_view_config
 .inner_color(/*vec4*/)
 .background_color(/*vec4*/);
 
-GraphView graph_view1(graph_view_config);
-GraphView graph_view2(graph_view_config);
+TempoUI::GraphView graph_view1(graph_view_config);
+TempoUI::GraphView graph_view2(graph_view_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the graph view constructor:
 ``` cpp
-GraphView graph_view1(GraphViewConfig()
+TempoUI::GraphView graph_view1(TempoUI::GraphViewConfig()
 .id(/*identifier*/)
 .scope_size(/*int*/)
 .interval(/*float*/)

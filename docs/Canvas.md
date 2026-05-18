@@ -18,16 +18,16 @@ Can be constructed before then utilized inside the constructor of the canvas:
 	CanvasConfig doesn't add anything itself. It only wraps the element
 	config base class. Important to set unique ids!
 */
-CanvasConfig canvas_config;
+TempoUI::CanvasConfig canvas_config;
 
-Canvas canvas1(canvas_config);
-Canvas canvas2(canvas_config);
+TempoUI::Canvas canvas1(canvas_config);
+TempoUI::Canvas canvas2(canvas_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the canvas constructor:
 ``` cpp
-Canvas canvas(CanvasConfig().id(/*identifier*/));
+TempoUI::Canvas canvas(TempoUI::CanvasConfig().id(/*identifier*/));
 ```
 Generally recommended for creating unique elements.
 >[!Info]

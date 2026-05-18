@@ -5,6 +5,7 @@ import re
 def main():
     if len(sys.argv) < 3:
         print("Wrong Format! | Expected: python embed_shader.py <input> <output>")
+        sys.exit(1)
 
     inputPath = sys.argv[1]
     outputPath = sys.argv[2]
@@ -13,9 +14,11 @@ def main():
     cleanName = re.sub(r'[^a-zA-Z0-9]', '_', filename)
 
     try:
-        with open(inputPath) as f:
+        with open(inputPath, 'r', encoding='utf-8') as f:
             shaderSource = f.read()
+
         header = f"""#pragma once
+#include <string_view>
 namespace Generated{{
     inline constexpr std::string_view {cleanName} = R"(
 {shaderSource}
@@ -24,9 +27,9 @@ namespace Generated{{
 """
         outputDir = os.path.dirname(outputPath)
         if outputDir:
-            os.makedirs(os.path.dirname(outputPath), exist_ok = True)
+            os.makedirs(outputDir, exist_ok = True)
         
-        with open(outputPath, 'w') as f:
+        with open(outputPath, 'w', encoding='utf-8') as f:
             f.write(header)
 
     except Exception as e:

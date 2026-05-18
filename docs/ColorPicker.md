@@ -16,7 +16,7 @@ ColorPicker(const std::string& id, glm::vec2 pos, glm::vec2 size)
 
 Can be constructed before then utilized inside the constructor of the color picker:
 ``` cpp
-ColorPickerConfig color_picker_config;
+TempoUI::ColorPickerConfig color_picker_config;
 color_picker_config
 .id(/*identifier*/)
 .selector_inner_diameter(/*float*/)
@@ -26,14 +26,14 @@ color_picker_config
 	Note that the background color is simply the border. The middle of the
 	selector will get updated with the color that is selected 
 */
-ColorPicker color_picker1(color_picker_config);
-ColorPicker color_picker2(color_picker_config);
+TempoUI::ColorPicker color_picker1(color_picker_config);
+TempoUI::ColorPicker color_picker2(color_picker_config);
 ```
 This is better if the goal is to utilize the same config multiple times.
 
 Another way is constructing the config inside the color picker constructor:
 ``` cpp
-ColorPicker color_picker1(ColorPickerConfig()
+TempoUI::ColorPicker color_picker1(TempoUI::ColorPickerConfig()
 .id(/*identifier*/)
 .selector_inner_diameter(/*float*/)
 .selector_outer_diameter(/*float*/)
